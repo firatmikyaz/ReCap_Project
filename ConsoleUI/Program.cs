@@ -12,7 +12,6 @@ namespace ConsoleUI
     {
         //static CarManager carManager = new CarManager(new InMemoryCarDal());
 
-        static CarManager carManager = new CarManager(new EfCarDal());
         #region dummybrands codes
         //var brands = new List<Brand> {
         //    new Brand {Id =1, BrandName="Maserati" },
@@ -23,27 +22,14 @@ namespace ConsoleUI
 
         static void Main(string[] args)
         {
-            //GetAllTest();
-            CarManager carManager = new CarManager(new EfCarDal());
 
-            var cars = carManager.GetAll();
+            CarManager carManager = new CarManager(new EfCarDal());
+            var cars = carManager.GetCarDetails();
             foreach (var car in cars)
             {
-                Console.WriteLine(car.CarName);
+                Console.WriteLine(car.CarName + " / " + car.BrandName + " / " + car.ColorName + " / " + car.DailyPrice);
             }
 
-            Console.ReadKey();
-
-
-        }
-
-        private static void GetAllTest()
-        {
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.ModelYear + " - " + car.Description);
-
-            }
             Console.ReadKey();
         }
     }
